@@ -1,12 +1,14 @@
 var mysql = require('mysql');
 
-exports.dbConnection = mysql.createConnection({
+const dbConnection = mysql.createConnection({
   user: 'student',
   password: 'student',
   database: 'chat'
 });
 
-exports.dbConnection.connect((err) => {
+dbConnection.connect((err) => {
   if (err) { throw err; }
   console.log('Success! Database connected.');
 });
+
+exports = dbConnection;
