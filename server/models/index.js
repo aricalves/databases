@@ -2,26 +2,22 @@ const db = require('../db');
 
 module.exports = {
   messages: {
-    get: function () {
-      db.query('select * from messages;', (error, results, fields) => {
+    get: function (callback) {
+      db.query('SELECT text FROM messages', (error, body, res) => {
         if (error) { throw error; }
-        console.log(results, fields);
+        callback('great success', res);
       });
-      connection.end();
       
     }, // a function which produces all the messages
-    post: function () {
-      db.query('insert into chats ____ ', (err, response) => {
-        console.log('post success:', response);
+    post: function ({username, message, roomname}, callback) {
+      let queryString = 'insert into messages (user, roomname, text) values (?, ?, ?)';
+      let queryArgs = [username, roomname, message];
+      db.query(queryString, queryArgs, (err, response) => {
+        console.log('post success');
+        callback();
       });
     } // a function which can be used to insert a message into the database
-    
-  },
-
-  users: {
-    // Ditto as above.
-    get: function () {},
-    post: function () {}
   }
+
 };
 
