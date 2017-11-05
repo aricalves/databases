@@ -25,9 +25,9 @@ DROP TABLE IF EXISTS `messages`;
     
 CREATE TABLE `messages` (
   `id` INTEGER NOT NULL AUTO_INCREMENT,
-  `user` VARCHAR(20) NOT NULL,
+  `username` VARCHAR(20) NOT NULL,
   `roomname` VARCHAR(20) NOT NULL,
-  `text` VARCHAR(200) NOT NULL,
+  `message` VARCHAR(200) NOT NULL,
   `time_stamp` TIMESTAMP NOT NULL,
   PRIMARY KEY (`id`)
 );
